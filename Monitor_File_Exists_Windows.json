@@ -15,7 +15,7 @@
     "AutomationAssumeRole": {
       "type": "String",
       "description": "(Optional) The IAM role for this execution. If no role is specified, AWS Systems Manager Automation will use the permissions of the user that executes this document.",
-      "default": ""
+      "default": "ADD_YOUR_IAM_ROLE_HERE"
     }
   },
   "mainSteps": [
