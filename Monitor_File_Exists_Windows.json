@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.3",
+  "description": "File Monitoring on Windows instances - Check file exists ot not",
+  "assumeRole": "{{ AutomationAssumeRole }}",
+  "parameters": {
+    "InstanceId": {
+      "type": "String",
+      "description": "(Required) The ID of the managed instance to manage the RDP settings of.",
+      "allowedPattern": "^[m]{0,1}i-[a-z0-9]{8,17}$"
+    },
+    "FilePath": {
+      "type": "String",
+      "description": "(Optional) Specify the complete file path",
+    },
+    "AutomationAssumeRole": {
+      "type": "String",
+      "description": "(Optional) The IAM role for this execution. If no role is specified, AWS Systems Manager Automation will use the permissions of the user that executes this document.",
+      "default": ""
+    }
+  },
+  "mainSteps": [
+    {
+      "name": "Monitor_File",
+      "action": "aws:runCommand",
+      "onFailure": "Abort",
+      "inputs": {
+        "DocumentName": "AWS-RunPowerShellScript",
+        "InstanceIds": [
+          "{{ InstanceId }}"
+        ],
+        "Parameters": {
+          "commands": [
+             " $ErrorActionPreference = 'Stop'; $path =\"{{ FilePath }}\"; if(![System.IO.File]::Exists($path)) { throw (New-Object System.IO.FileNotFoundException) }"
+          ]
+        }
+      },
+      "isCritical": "true",
+      "isEnd": "true"
+    }
+  ],
+ "outputs": [
+    "Monitor_File.Output"
+  ]
+}
