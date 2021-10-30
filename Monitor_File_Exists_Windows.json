@@ -1,7 +1,6 @@
 {
   "schemaVersion": "0.3",
   "description": "File Monitoring on Windows instances - Check file exists ot not",
-  "assumeRole": "{{ AutomationAssumeRole }}",
   "parameters": {
     "InstanceId": {
       "type": "String",
@@ -15,7 +14,7 @@
     "AutomationAssumeRole": {
       "type": "String",
       "description": "(Optional) The IAM role for this execution. If no role is specified, AWS Systems Manager Automation will use the permissions of the user that executes this document.",
-      "default": "ADD_YOUR_IAM_ROLE_HERE"
+      "default": ""
     }
   },
   "mainSteps": [
