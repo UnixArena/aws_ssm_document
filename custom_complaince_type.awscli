@@ -1,0 +1,2 @@
+[cloudshell-user@ip-10-0-26-44 ~]$ aws ssm put-compliance-items --resource-id i-0e4bde3075d00fce3 --resource-type ManagedInstance --compliance-type Custom:Monitoring --execution-summary ExecutionTime=$(date '+%Y-%m-%dT%H:%M:%SZ') --items Id=0ddf5323,Title=Test,Severity=CRITICAL,,Status=COMPLIANT 
+[cloudshell-user@ip-10-0-26-44 ~]$
